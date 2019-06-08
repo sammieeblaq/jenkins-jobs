@@ -3,9 +3,9 @@ import sqlite3
 from datetime import datetime
 
 # defining jenkins parameters
-jenkins_url = "http://172.82.162.36:8080"
-username = "simplepay"
-password = "payadmin10"
+jenkins_url = "http://localhost:8080/"
+username = "samuel"
+password = "samuel45"
 
 # database details
 db_name = "jenkins.db"
@@ -32,14 +32,14 @@ for job_name, job_instance in server.get_jobs():
 		
 	i = datetime.now()
 	checked_time = i.strftime("%Y/%m/%d %H:%M:%S")
-	tuple1 = (job_instance.name, status, checked_time)
+	first_tuple = (job_instance.name, status, checked_time)
 	c.execute("SELECT id FROM jenkins WHERE job_name = ?", (job_instance.name,))
 	data=c.fetchone()
 	if data is None:
-		c.execute('INSERT INTO jenkins (job_name, status, date_checked) VALUES (?,?,?)', tuple1)
+		c.execute('INSERT INTO jenkins (job_name, status, date_checked) VALUES (?,?,?)', first_tuple)
 	else:
-		tuple2 = (status, checked_time, job_instance.name)
-		c.execute('UPDATE jenkins SET status=?, date_checked=? WHERE job_name=?', tuple2)
+		second_tuple = (status, checked_time, job_instance.name)
+		c.execute('UPDATE jenkins SET status=?, date_checked=? WHERE job_name=?', second_tuple)
 		
 	### Add to dictionary ###
 	jobs_dict[job_instance.name] = status
