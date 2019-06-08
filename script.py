@@ -4,8 +4,8 @@ from datetime import datetime
 
 # defining jenkins parameters
 jenkins_url = "http://172.82.162.36:8080"
-username = "samuel"
-password = "sammieeblaq"
+username = "simplepay"
+password = "payadmin10"
 
 # database details
 db_name = "jenkins.db"
