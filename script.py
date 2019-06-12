@@ -21,6 +21,9 @@ jobs_dict = {}
 conn = sqlite3.connect(db_name)
 c = conn.cursor()
 
+c.execute('create table jenkins ( id INTEGER PRIMARY KEY, job_name NOT NULL, status NOT NULL, date_checked TEXT )')
+
+
 for job_name, job_instance in server.get_jobs():
 	if job_instance.is_running():
 		status = "Running"
