@@ -32,7 +32,7 @@ for job_name, job_instance in server.get_jobs():
 		status = simple_build.get_status()
 		
 	i = datetime.now()
-	checked_time = i.strftime("%Y/%m/%d %H:%M:%S")
+	checked_time = i.strftime("%Y/%B/%d %H-%M-%S")
 	first_tuple = (job_instance.name, status, checked_time)
 	c.execute("SELECT id FROM jenkins WHERE job_name = ?", (job_instance.name,))
 	data=c.fetchone()
