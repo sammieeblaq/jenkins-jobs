@@ -16,6 +16,7 @@ server = Jenkins(jenkins_url, username, password)
 # dictionary that holds the jobs name as keys 
 jobs_dict = {}
 
+
 # Connect to the database
 conn = sqlite3.connect(db_name)
 c = conn.cursor()
@@ -49,4 +50,3 @@ conn.commit()
 
 # We can close the connection 
 conn.close()
-
